@@ -3,3 +3,4 @@ pandas
 streamlit
 gsheetsdb
 numpy
+gsheetsdb
