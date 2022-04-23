@@ -69,8 +69,8 @@ def run_query(query):
     return rows
 
 sheet_url = st.secrets["private_gsheets_url"]
-#st.markdown(sheet_url)
-rows = run_query(f'A2:G9, SELECT * FROM"{sheet_url}"')
+st.markdown(sheet_url)
+rows = run_query(f'SELECT * FROME"{sheet_url}"')
 
 # Print results.
 st.write(rows)
