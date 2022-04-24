@@ -35,9 +35,9 @@ st.write('connection created')
 sheet_url = st.secrets["private_gsheets_url"]
 st.markdown(sheet_url)
 
-result = conn.execute(f"""
+result = conn.execute("""
     SELECT * FROM
-        "{sheet_url}"
+        "{https://docs.google.com/spreadsheets/d/1JznNtYSlTlOwmFq8baTR4Ws0r7f865wyPe2NG4m45a0/edit?usp=sharing}"
 """, headers=1)
 for row in result:
     st.write(row)
