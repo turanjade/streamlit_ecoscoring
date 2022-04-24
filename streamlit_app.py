@@ -38,6 +38,10 @@ map_data['lon'] = tripselected.longitude
 st.map(map_data)
 
 
+
+########################################################################################################################
+##################################archived##############################################################################
+"""
 if st.sidebar.button('Upload your GPS trajectory data'):
     uploaded_file = st.sidebar.file_uploader(" ")
     if uploaded_file is not None:
@@ -62,6 +66,4 @@ if st.sidebar.button('Upload your GPS trajectory data'):
     map_data['lat'] = tripselected.latitude
     map_data['lon'] = tripselected.longitude
     st.map(map_data)        
-
-########################################################################################################################
-##################################archived##############################################################################
+"""
