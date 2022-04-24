@@ -19,6 +19,13 @@ if st.sidebar.button('Loading trajectory'):
     df = pd.read_csv(gs_url, encoding = 'utf-8')
     st.write(df.head())
     
+if st.sidebar.button('Upload your GPS trajectory data'):
+    uploaded_file = st.sidebar.file_uploader(" ")
+    if uploaded_file is not None:
+        # Can be used wherever a "file-like" object is accepted:
+        df = pd.read_csv(uploaded_file, encoding = 'utf-8')
+        #st.write(df.head())   
+        
 #select a specific vehicle
 st.subheader('Choose one vehicle to visualize')
 vehoption = st.selectbox(' ', df.vehid.unique())
