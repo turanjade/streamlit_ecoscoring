@@ -4,3 +4,4 @@ streamlit
 gsheetsdb
 numpy
 gsheetsdb
+shillelagh
