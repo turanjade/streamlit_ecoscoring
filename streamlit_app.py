@@ -31,7 +31,7 @@ credentials = service_account.Credentials.from_service_account_info(
     ],
 )
 conn = connect(credentials=credentials)
-
+st.write('connection created')
 
 result = conn.execute("""
     SELECT
