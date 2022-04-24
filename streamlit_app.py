@@ -9,6 +9,7 @@ from google.oauth2 import service_account
 st.title('This is Eco-score!')
 
 st.sidebar.button('Back to home')
+st.write("  ")
 
 if st.sidebar.button('Loading trajectory'):
     gs_id = "1JznNtYSlTlOwmFq8baTR4Ws0r7f865wyPe2NG4m45a0"
@@ -18,7 +19,7 @@ if st.sidebar.button('Loading trajectory'):
     df = pd.read_csv(gs_url)
     st.write(df.head())
 
-else if st.sidebar.button('Upload your GPS trajectory data'):
+if st.sidebar.button('Upload your GPS trajectory data'):
     uploaded_file = st.sidebar.file_uploader(" ")
     if uploaded_file is not None:
         # Can be used wherever a "file-like" object is accepted:
