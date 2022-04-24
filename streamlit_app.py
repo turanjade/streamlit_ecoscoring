@@ -11,20 +11,15 @@ st.title('This is Eco-score!')
 st.sidebar.button('Back to home')
 st.write("  ")
 
-if st.sidebar.button('Loading trajectory'):
-    gs_id = "1JznNtYSlTlOwmFq8baTR4Ws0r7f865wyPe2NG4m45a0"
-    sheetname = "sampledata"
-    gs_url = "https://docs.google.com/spreadsheets/d/{}/gviz/tq?tqx=out:csv&sheet={}".format(gs_id, sheetname)
-    #st.write(gs_url)
-    df = pd.read_csv(gs_url, encoding = 'utf-8')
-    st.write(df.head())
-    
-if st.sidebar.button('Upload your GPS trajectory data'):
-    uploaded_file = st.sidebar.file_uploader(" ")
-    if uploaded_file is not None:
-        # Can be used wherever a "file-like" object is accepted:
-        df = pd.read_csv(uploaded_file, encoding = 'utf-8')
-        #st.write(df.head())   
+#if st.sidebar.button('Loading trajectory'):
+gs_id = "1JznNtYSlTlOwmFq8baTR4Ws0r7f865wyPe2NG4m45a0"
+sheetname = "sampledata"
+gs_url = "https://docs.google.com/spreadsheets/d/{}/gviz/tq?tqx=out:csv&sheet={}".format(gs_id, sheetname)
+#st.write(gs_url)
+df = pd.read_csv(gs_url, encoding = 'utf-8')
+st.write(df.head())
+
+
         
 #select a specific vehicle
 st.subheader('Choose one vehicle to visualize')
