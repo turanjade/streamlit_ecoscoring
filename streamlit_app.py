@@ -6,7 +6,6 @@ import streamlit as st
 import pandas
 from gsheetsdb import connect
 from google.oauth2 import service_account
-from shillelagh.backends.apsw.db import connect
 
 #"""
 # Welcome to Streamlit!
@@ -30,7 +29,8 @@ credentials = service_account.Credentials.from_service_account_info(
         "https://www.googleapis.com/auth/spreadsheets",
     ],
 )
-
+conn = connect(credentials=credentials)
+st.write('connection created')
 
 
 st.sidebar.subheader('Upload your GPS trajectory data')
