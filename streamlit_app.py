@@ -35,12 +35,12 @@ result = conn.execute(f"""
 
 i = 1
 for rows in result:
-    st.write(rows)
+    st.write(type(rows))
     if i == 1:
         break
 
-results = results.fetchall()
-st.write('fetch all')
+#results = results.fetchall()
+#st.write('fetch all')
 selecteddata = pd.DataFrame(results, columns = ['orderid', 'vehid']) #, columns=['recordid', 'vehid', 'orderid', 'time', 'longitude', 'latitude', 'date'])
 st.write(selecteddata.head())
 
