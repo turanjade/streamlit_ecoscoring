@@ -35,12 +35,19 @@ st.write('connection created')
 sheet_url = st.secrets["private_gsheets_url"]
 st.markdown(sheet_url)
 
-srt = 'SELECT orderid FROM "https://docs.google.com/spreadsheets/d/1JznNtYSlTlOwmFq8baTR4Ws0r7f865wyPe2NG4m45a0/edit#gid=0" WHERE orderid = "4da2cfjf443wB5eDp6b34honega1xx6n"'
+query = 'SELECT orderid FROM "https://docs.google.com/spreadsheets/d/1JznNtYSlTlOwmFq8baTR4Ws0r7f865wyPe2NG4m45a0/edit#gid=0" WHERE orderid = "4da2cfjf443wB5eDp6b34honega1xx6n"'
 result = conn.execute(f"""
-    {srt}
+    {query}
 """, headers=1)
+
+i = 1
 for rows in result:
     st.write(rows)
+    if i == 1:
+        break
+
+selecteddata = pd.DataFrame(results, columns=['recordid', 'vehid', 'orderid', 'time', 'longitude', 'latitude', 'date'])
+st.write(selecteddata.head())
 
 st.sidebar.subheader('Upload your GPS trajectory data')
 uploaded_file = st.sidebar.file_uploader(" ")
