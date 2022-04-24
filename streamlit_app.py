@@ -24,16 +24,6 @@ from shillelagh.backends.apsw.db import connect
 #    ("Email", "Home phone", "Mobile phone")
 #)
 
-# Create a connection object.
-credentials = service_account.Credentials.from_service_account_info(
-    st.secrets["gcp_service_account"],
-    scopes=[
-        "https://www.googleapis.com/auth/spreadsheets",
-    ],
-)
-conn = connect(credentials=credentials)
-st.write('connection created')
-
 
 conn = connect()
 result = conn.execute("""
