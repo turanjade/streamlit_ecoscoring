@@ -36,7 +36,7 @@ sheet_url = st.secrets["private_gsheets_url"]
 st.markdown(sheet_url)
 
 result = conn.execute("""
-    SELECT * FROM "https://docs.google.com/spreadsheets/d/1JznNtYSlTlOwmFq8baTR4Ws0r7f865wyPe2NG4m45a0/edit#gid=0" WHERE vehid = '9j22fi9gb62rB4luAgce49ahegf_qBbg'
+    SELECT * FROM "https://docs.google.com/spreadsheets/d/1JznNtYSlTlOwmFq8baTR4Ws0r7f865wyPe2NG4m45a0/edit#gid=0" WHERE orderid = '4da2cfjf443wB5eDp6b34honega1xx6n'
 """, headers=1)
 for rows in result:
     st.write(rows)
