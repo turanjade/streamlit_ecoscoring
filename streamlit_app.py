@@ -3,7 +3,6 @@ import altair as alt
 import math
 import pandas as pd
 import streamlit as st
-import pandas
 from gsheetsdb import connect
 from google.oauth2 import service_account
 
@@ -40,7 +39,7 @@ for rows in result:
     if i == 1:
         break
 
-selecteddata = pd.DataFrame(results)#, columns=['recordid', 'vehid', 'orderid', 'time', 'longitude', 'latitude', 'date'])
+selecteddata = pd.DataFrame(results, columns = ['orderid'])#, columns=['recordid', 'vehid', 'orderid', 'time', 'longitude', 'latitude', 'date'])
 st.write(selecteddata.head())
 
 st.sidebar.subheader('Upload your GPS trajectory data')
