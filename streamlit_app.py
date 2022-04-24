@@ -40,6 +40,8 @@ result = conn.execute("""
         *
     FROM
         "https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/"
+    GROUP BY
+        country
 """, headers=1)
 for rows in result:
     st.write(rows)
