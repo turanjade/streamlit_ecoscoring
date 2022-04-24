@@ -18,6 +18,23 @@ if st.sidebar.button('Loading trajectory'):
     #st.write(gs_url)
     df = pd.read_csv(gs_url)
     st.write(df.head())
+    #select a specific vehicle
+    st.subheader('Choose one vehicle to visualize')
+    vehoption = st.selectbox(' ', df.vehid.unique())
+    vehselected = df[df.vehid == vehoption]
+
+    #select a spcific trip of that vehicle
+    st.write('This vehicle has in total ', str(len(vehselected.orderid.unique())), ' trips')
+
+    st.subheader('Choose one trip to visualize')
+    tripoption = st.selectbox(' ', vehselected.orderid.unique())
+    tripselected = vehselected[vehselected.orderid == tripoption]
+
+    map_data = pd.DataFrame(columns = ['lat', 'lon'])
+    map_data['lat'] = tripselected.latitude
+    map_data['lon'] = tripselected.longitude
+    st.map(map_data)
+
 
 if st.sidebar.button('Upload your GPS trajectory data'):
     uploaded_file = st.sidebar.file_uploader(" ")
@@ -25,27 +42,6 @@ if st.sidebar.button('Upload your GPS trajectory data'):
         # Can be used wherever a "file-like" object is accepted:
         df = pd.read_csv(uploaded_file, encoding = 'utf-8')
         #st.write(df.head())
-
-
-#select a specific vehicle
-st.subheader('Choose one vehicle to visualize')
-st.write(df.vehid.unique())
-vehoption = st.selectbox(' ', df.vehid.unique())
-vehselected = df[df.vehid == vehoption]
-
-#select a spcific trip of that vehicle
-st.write('This vehicle has in total ', str(len(vehselected.orderid.unique())), ' trips')
-
-st.subheader('Choose one trip to visualize')
-tripoption = st.selectbox(' ', vehselected.orderid.unique())
-tripselected = vehselected[vehselected.orderid == tripoption]
-
-map_data = pd.DataFrame(columns = ['lat', 'lon'])
-map_data['lat'] = tripselected.latitude
-map_data['lon'] = tripselected.longitude
-st.map(map_data)
-
-
 
 ########################################################################################################################
 ##################################archived##############################################################################
