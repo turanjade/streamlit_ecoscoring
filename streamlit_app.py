@@ -38,13 +38,14 @@ st.write('connection created')
 # Uses st.cache to only rerun when the query changes or after 10 min.
 @st.cache(ttl=600)
 def run_query(query):
-    rows = conn.execute(query, headers=1)
+    rows = conn.execute(query) #, headers=1
     rows = rows.fetchall()
     return rows
 
 sheet_url = st.secrets["private_gsheets_url"]
 st.markdown(sheet_url)
 rows = run_query(f'SELECT * FROM"{sheet_url}"')
+
 
 # Print results.
 #st.write(rows)
