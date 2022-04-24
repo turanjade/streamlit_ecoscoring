@@ -8,8 +8,8 @@ from google.oauth2 import service_account
 
 st.title('This is Eco-score!')
 
-if st.sidebar.button('Back to home'):
-    st.write("  ")
+#if st.sidebar.button('Back to home'):
+#    st.write("  ")
 
 
 #if st.sidebar.button('Loading trajectory'):
