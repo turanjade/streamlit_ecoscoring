@@ -6,31 +6,24 @@ import streamlit as st
 from gsheetsdb import connect
 from google.oauth2 import service_account
 
-"""
-#st.title(This is eco-score!)
-"""
-
-# Using object notation
-#add_selectbox = st.sidebar.selectbox(
-#    "How would you like to be contacted?",
-#    ("Email", "Home phone", "Mobile phone")
-#)
+st.title('This is Eco-score!')
 
 
-gs_id = "1JznNtYSlTlOwmFq8baTR4Ws0r7f865wyPe2NG4m45a0"
-sheetname = "sampledata"
-gs_url = "https://docs.google.com/spreadsheets/d/{}/gviz/tq?tqx=out:csv&sheet={}".format(gs_id, sheetname)
-st.write(gs_url)
-selected = pd.read_csv(gs_url)
 
-st.write(selected.head())
+if st.sidebar.button('Loading trajectory'):
+    gs_id = "1JznNtYSlTlOwmFq8baTR4Ws0r7f865wyPe2NG4m45a0"
+    sheetname = "sampledata"
+    gs_url = "https://docs.google.com/spreadsheets/d/{}/gviz/tq?tqx=out:csv&sheet={}".format(gs_id, sheetname)
+    #st.write(gs_url)
+    df = pd.read_csv(gs_url)
+    st.write(selected.head())
 
-st.sidebar.subheader('Upload your GPS trajectory data')
-uploaded_file = st.sidebar.file_uploader(" ")
-if uploaded_file is not None:
-    # Can be used wherever a "file-like" object is accepted:
-    df = pd.read_csv(uploaded_file, encoding = 'utf-8')
-    #st.write(df.head())
+if st.sidebar.subheader('Upload your GPS trajectory data'):
+    uploaded_file = st.sidebar.file_uploader(" ")
+    if uploaded_file is not None:
+        # Can be used wherever a "file-like" object is accepted:
+        df = pd.read_csv(uploaded_file, encoding = 'utf-8')
+        #st.write(df.head())
 
 
 #select a specific vehicle
