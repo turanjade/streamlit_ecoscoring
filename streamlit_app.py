@@ -16,13 +16,13 @@ if st.sidebar.button('Loading trajectory'):
     sheetname = "sampledata"
     gs_url = "https://docs.google.com/spreadsheets/d/{}/gviz/tq?tqx=out:csv&sheet={}".format(gs_id, sheetname)
     #st.write(gs_url)
-    df = pd.read_csv(gs_url)
+    df = pd.read_csv(gs_url, encoding = 'utf-8')
     st.write(df.head())
     
 #select a specific vehicle
 st.subheader('Choose one vehicle to visualize')
 vehoption = st.selectbox(' ', df.vehid.unique())
-st.write(vehoption)
+st.write(df.vehid.unique())
 vehselected = df[df.vehid == vehoption]
 
 #select a spcific trip of that vehicle
