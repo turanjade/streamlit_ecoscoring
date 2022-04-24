@@ -7,16 +7,10 @@ import pandas
 from gsheetsdb import connect
 from google.oauth2 import service_account
 
-#"""
-# Welcome to Streamlit!
+"""
+#This is eco-score!
+"""
 
-#Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:
-
-#If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-#forums](https://discuss.streamlit.io).
-
-#In the meantime, below is an example of what you can do with just a few lines of code:
-#"""
 # Using object notation
 #add_selectbox = st.sidebar.selectbox(
 #    "How would you like to be contacted?",
@@ -46,7 +40,7 @@ for rows in result:
     if i == 1:
         break
 
-selecteddata = pd.DataFrame(results, columns=['recordid', 'vehid', 'orderid', 'time', 'longitude', 'latitude', 'date'])
+selecteddata = pd.DataFrame(results)#, columns=['recordid', 'vehid', 'orderid', 'time', 'longitude', 'latitude', 'date'])
 st.write(selecteddata.head())
 
 st.sidebar.subheader('Upload your GPS trajectory data')
