@@ -7,7 +7,7 @@ from gsheetsdb import connect
 from google.oauth2 import service_account
 
 """
-#This is eco-score!
+#st.title(This is eco-score!)
 """
 
 # Using object notation
@@ -16,28 +16,6 @@ from google.oauth2 import service_account
 #    ("Email", "Home phone", "Mobile phone")
 #)
 
-credentials = service_account.Credentials.from_service_account_info(
-    st.secrets["gcp_service_account"],
-    scopes=[
-        "https://www.googleapis.com/auth/spreadsheets",
-    ],
-)
-conn = connect(credentials=credentials)
-st.write('connection created')
-
-sheet_url = st.secrets["private_gsheets_url"]
-st.markdown(sheet_url)
-
-query = 'SELECT orderid, vehid FROM "https://docs.google.com/spreadsheets/d/1JznNtYSlTlOwmFq8baTR4Ws0r7f865wyPe2NG4m45a0/edit#gid=0" WHERE orderid = "4da2cfjf443wB5eDp6b34honega1xx6n"'
-result = conn.execute(f"""
-    {query}
-""", headers=1)
-
-i = 1
-for rows in result:
-    st.write(type(rows))
-    if i == 1:
-        break
 
 gs_id = "1JznNtYSlTlOwmFq8baTR4Ws0r7f865wyPe2NG4m45a0"
 sheetname = "sampledata"
@@ -46,10 +24,6 @@ st.write(gs_url)
 selected = pd.read_csv(gs_url)
 
 st.write(selected.head())
-#results = results.fetchall()
-#st.write('fetch all')
-selecteddata = pd.DataFrame(results, columns = ['orderid', 'vehid']) #, columns=['recordid', 'vehid', 'orderid', 'time', 'longitude', 'latitude', 'date'])
-st.write(selecteddata.head())
 
 st.sidebar.subheader('Upload your GPS trajectory data')
 uploaded_file = st.sidebar.file_uploader(" ")
@@ -78,3 +52,33 @@ st.map(map_data)
 
 
 
+########################################################################################################################
+##################################archived##############################################################################
+"""
+credentials = service_account.Credentials.from_service_account_info(
+    st.secrets["gcp_service_account"],
+    scopes=[
+        "https://www.googleapis.com/auth/spreadsheets",
+    ],
+)
+conn = connect(credentials=credentials)
+st.write('connection created')
+
+sheet_url = st.secrets["private_gsheets_url"]
+st.markdown(sheet_url)
+
+query = 'SELECT orderid, vehid FROM "https://docs.google.com/spreadsheets/d/1JznNtYSlTlOwmFq8baTR4Ws0r7f865wyPe2NG4m45a0/edit#gid=0" WHERE orderid = "4da2cfjf443wB5eDp6b34honega1xx6n"'
+result = conn.execute(f"""
+    {query}
+""", headers=1)
+
+i = 1
+for rows in result:
+    st.write(type(rows))
+    if i == 1:
+        break
+
+#results = results.fetchall()
+#st.write('fetch all')
+selecteddata = pd.DataFrame(results, columns = ['orderid', 'vehid']) #, columns=['recordid', 'vehid', 'orderid', 'time', 'longitude', 'latitude', 'date'])
+st.write(selecteddata.head())
