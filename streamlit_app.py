@@ -6,7 +6,7 @@ import streamlit as st
 import pandas
 from gsheetsdb import connect
 from google.oauth2 import service_account
-
+from shillelagh.backends.apsw.db import connect
 
 #"""
 # Welcome to Streamlit!
@@ -34,24 +34,19 @@ credentials = service_account.Credentials.from_service_account_info(
 conn = connect(credentials=credentials)
 st.write('connection created')
 
-# Perform SQL query on the Google Sheet. 
-# Uses st.cache to only rerun when the query changes or after 10 min.
-#@st.cache(ttl=600)
-#def run_query(query):
-#    rows = conn.execute(query, headers=1)
-#    rows = rows.fetchall()
-#    return rows
 
-sheet_url = st.secrets["private_gsheets_url"]
-#st.markdown(sheet_url)
-rows = conn.execute("""
+conn = connect()
+result = conn.execute("""
     SELECT
-        *
+        country
+      , SUM(cnt)
     FROM
-        "{https://docs.google.com/spreadsheets/d/1JznNtYSlTlOwmFq8baTR4Ws0r7f865wyPe2NG4m45a0/edit?usp=sharing}"
+        "https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/"
+    GROUP BY
+        country
 """, headers=1)
-st.write(rows)
-#rows = run_query(f'SELECT * FROM "{sheet_url}"')
+for row in result:
+    print(row)
 
 
 # Print results.
