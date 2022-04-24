@@ -35,8 +35,9 @@ st.write('connection created')
 sheet_url = st.secrets["private_gsheets_url"]
 st.markdown(sheet_url)
 
-result = conn.execute("""
-    SELECT latitude FROM "https://docs.google.com/spreadsheets/d/1JznNtYSlTlOwmFq8baTR4Ws0r7f865wyPe2NG4m45a0/edit#gid=0" WHERE orderid = '4da2cfjf443wB5eDp6b34honega1xx6n'
+srt = 'SELECT latitude FROM "https://docs.google.com/spreadsheets/d/1JznNtYSlTlOwmFq8baTR4Ws0r7f865wyPe2NG4m45a0/edit#gid=0" WHERE orderid = "4da2cfjf443wB5eDp6b34honega1xx6n"'
+result = conn.execute(f"""
+    {srt}
 """, headers=1)
 for rows in result:
     st.write(rows)
