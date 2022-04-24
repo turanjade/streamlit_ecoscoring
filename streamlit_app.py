@@ -42,7 +42,7 @@ result = conn.execute("""
         country
 """, headers=1)
 for row in result:
-    print(row)
+    st.write(row)
 
 st.sidebar.subheader('Upload your GPS trajectory data')
 uploaded_file = st.sidebar.file_uploader(" ")
