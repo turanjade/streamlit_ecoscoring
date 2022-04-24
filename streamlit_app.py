@@ -36,11 +36,11 @@ sheet_url = st.secrets["private_gsheets_url"]
 st.markdown(sheet_url)
 
 result = conn.execute("""
-    SELECT * FROM
-        "{https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/}"
+    SELECT
+        *
+    FROM
+        "https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/"
 """, headers=1)
-for row in result:
-    st.write(row)
 
 st.sidebar.subheader('Upload your GPS trajectory data')
 uploaded_file = st.sidebar.file_uploader(" ")
