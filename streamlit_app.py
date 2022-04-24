@@ -29,6 +29,7 @@ if st.sidebar.button('Upload your GPS trajectory data'):
 
 #select a specific vehicle
 st.subheader('Choose one vehicle to visualize')
+st.write(df.vehid.unique())
 vehoption = st.selectbox(' ', df.vehid.unique())
 vehselected = df[df.vehid == vehoption]
 
