@@ -35,7 +35,7 @@ st.write('connection created')
 sheet_url = st.secrets["private_gsheets_url"]
 st.markdown(sheet_url)
 
-result = conn.execute("""
+result = conn.execute(f"""
     SELECT * FROM
         "{sheet_url}"
 """, headers=1)
