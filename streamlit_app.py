@@ -42,7 +42,7 @@ result = conn.execute("""
         "https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/"
 """, headers=1)
 for rows in result:
-    st.write(results)
+    st.write(rows)
 
 st.sidebar.subheader('Upload your GPS trajectory data')
 uploaded_file = st.sidebar.file_uploader(" ")
