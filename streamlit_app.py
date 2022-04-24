@@ -39,6 +39,7 @@ st.write('connection created')
 @st.cache(ttl=600)
 def run_query(query):
     rows = conn.execute(query, headers=1)
+    st.write('line41 executed')
     rows = rows.fetchall()
     return rows
 
