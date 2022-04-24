@@ -30,24 +30,8 @@ credentials = service_account.Credentials.from_service_account_info(
         "https://www.googleapis.com/auth/spreadsheets",
     ],
 )
-conn = connect(credentials=credentials)
-st.write('connection created')
-
-result = conn.execute("""
-    SELECT
-        country
-      , SUM(cnt)
-    FROM
-        "https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/"
-    GROUP BY
-        country
-""", headers=1)
-for row in result:
-    print(row)
 
 
-# Print results.
-#st.write(rows)
 
 st.sidebar.subheader('Upload your GPS trajectory data')
 uploaded_file = st.sidebar.file_uploader(" ")
