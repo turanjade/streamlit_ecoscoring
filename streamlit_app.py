@@ -18,9 +18,11 @@ if st.sidebar.button('Loading trajectory'):
     #st.write(gs_url)
     df = pd.read_csv(gs_url)
     st.write(df.head())
+    
     #select a specific vehicle
     st.subheader('Choose one vehicle to visualize')
     vehoption = st.selectbox(' ', df.vehid.unique())
+    st.write(vehoption)
     vehselected = df[df.vehid == vehoption]
 
     #select a spcific trip of that vehicle
@@ -45,32 +47,3 @@ if st.sidebar.button('Upload your GPS trajectory data'):
 
 ########################################################################################################################
 ##################################archived##############################################################################
-"""
-credentials = service_account.Credentials.from_service_account_info(
-    st.secrets["gcp_service_account"],
-    scopes=[
-        "https://www.googleapis.com/auth/spreadsheets",
-    ],
-)
-conn = connect(credentials=credentials)
-st.write('connection created')
-
-sheet_url = st.secrets["private_gsheets_url"]
-st.markdown(sheet_url)
-
-query = 'SELECT orderid, vehid FROM "https://docs.google.com/spreadsheets/d/1JznNtYSlTlOwmFq8baTR4Ws0r7f865wyPe2NG4m45a0/edit#gid=0" WHERE orderid = "4da2cfjf443wB5eDp6b34honega1xx6n"'
-result = conn.execute(f"""
-
-""", headers=1)
-
-i = 1
-for rows in result:
-    st.write(type(rows))
-    if i == 1:
-        break
-
-#results = results.fetchall()
-#st.write('fetch all')
-selecteddata = pd.DataFrame(results, columns = ['orderid', 'vehid']) #, columns=['recordid', 'vehid', 'orderid', 'time', 'longitude', 'latitude', 'date'])
-st.write(selecteddata.head())
-"""
