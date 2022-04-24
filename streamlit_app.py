@@ -39,6 +39,8 @@ for rows in result:
     if i == 1:
         break
 
+selected = pd.read_csv(sheet_url)
+st.write(selected.head())
 #results = results.fetchall()
 #st.write('fetch all')
 selecteddata = pd.DataFrame(results, columns = ['orderid', 'vehid']) #, columns=['recordid', 'vehid', 'orderid', 'time', 'longitude', 'latitude', 'date'])
