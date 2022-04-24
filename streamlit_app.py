@@ -39,7 +39,12 @@ for rows in result:
     if i == 1:
         break
 
-selected = pd.read_csv(sheet_url)
+gs_id = "1JznNtYSlTlOwmFq8baTR4Ws0r7f865wyPe2NG4m45a0"
+sheetname = "sampledata"
+gs_url = "https://docs.google.com/spreadsheets/d/{}/gviz/tq?tqx=out:csv&sheet={}".format(gs_id, sheetname)
+st.write(gs_url)
+selected = pd.read_csv(gs_url)
+
 st.write(selected.head())
 #results = results.fetchall()
 #st.write('fetch all')
