@@ -16,9 +16,9 @@ if st.sidebar.button('Loading trajectory'):
     gs_url = "https://docs.google.com/spreadsheets/d/{}/gviz/tq?tqx=out:csv&sheet={}".format(gs_id, sheetname)
     #st.write(gs_url)
     df = pd.read_csv(gs_url)
-    st.write(selected.head())
+    st.write(df.head())
 
-if st.sidebar.subheader('Upload your GPS trajectory data'):
+if st.sidebar.button('Upload your GPS trajectory data'):
     uploaded_file = st.sidebar.file_uploader(" ")
     if uploaded_file is not None:
         # Can be used wherever a "file-like" object is accepted:
