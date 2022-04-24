@@ -28,7 +28,7 @@ vehoption = st.selectbox(' ', df.vehid.unique())
 vehselected = df[df.vehid == vehoption]
 
 #select a spcific trip of that vehicle
-st.markdown('This vehicle has in total ', str(len(vehselected.orderid.unique())), ' trips')
+st.write('This vehicle has in total ', str(len(vehselected.orderid.unique())), ' trips')
 
 st.subheader('Choose one trip to visualize')
 tripoption = st.selectbox(' ', vehselected.orderid.unique())
